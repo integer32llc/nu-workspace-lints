@@ -1,10 +1,10 @@
 # Transition to workspace lints
 
 - Take an argument of the rust project location
-- Find all crate-wide lint attributes in lib.rs files of crates listed in the workspace
+- Find all crate-wide lint attributes in target root files of crates listed in the workspace
   - parse top-level Cargo.toml as toml
   - read workspace.members
-  - in each member/src/lib.rs or member/src/main.rs or member/src/bin/*.rs, rg "#![(forbid|deny|warn|allow(($1)))]"
+  - in each target's src_path, rg "#![(forbid|deny|warn|allow(($1)))]"
 - Unify them by name and see if there are any listed with different levels that would conflict
   - if there are, error to go resolve?
   - or go with the level used the most and leave the remaining attributes with a comment?
